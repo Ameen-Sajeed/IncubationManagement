@@ -1,0 +1,9 @@
+.hi{
+    background-size: cover;
+    border-radius: 80px;
+    /* opacity: 80%; */
+}
+
+.parent{
+    padding: 20px;
+}

@@ -1,8 +1,9 @@
 import React from 'react'
-import bgImg from '../../../assets/images/img1.jpg';
+import bgImg from '../../../assets/images/5132.jpg';
 import { useState } from 'react';
 import Axios from 'axios';
 import { Link,useNavigate } from 'react-router-dom';
+import './Signup.css'
 
 export default function Signup() {
 
@@ -69,7 +70,7 @@ export default function Signup() {
 
     
   return (
-    <section>
+    <div className='hi'>
         <div className="register">
             <div className="col-1">
                 <h1 className='text-blue-900 font-bold text-4xl p-8'>Create an Account ! </h1>
@@ -114,6 +115,6 @@ export default function Signup() {
                 <img src={bgImg} alt="" />
             </div>
         </div>
-    </section>
+    </div>
   )
 }

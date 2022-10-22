@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react'
-import loginImg from '../../../assets/images/login.jpg'
+import loginImg from '../../../assets/images/20944201.jpg'
 import { Link, useNavigate } from 'react-router-dom'
 import { UserContext } from '../../../Store/UserContext'
 import axios from 'axios'
@@ -9,8 +9,8 @@ import { useCookies } from 'react-cookie';
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [errorMessage, setErrorMessage] = useState('')
-    const [cookies, setCookie] = useCookies(['']);
-    // const {setUserDetails, userDetails}=useContext(UserContext)
+    // const [cookies, setCookie] = useCookies(['']);
+    const {setUserDetails, userDetails}=useContext(UserContext)
     const navigate=useNavigate()
 
     const handleSubmit = async (e) => {
@@ -34,9 +34,9 @@ import { useCookies } from 'react-cookie';
               if (data) {
                   if (data?.user) {
                     console.log(data)
-                    setCookie('jwt',data.token, { path: '/' });
+                    // setCookie('jwt',data.token, { path: '/' });
                     localStorage.setItem('user', JSON.stringify(data.user))
-                    // setUserDetails(data.user)
+                    setUserDetails(data.user)
                       navigate("/");           
                   } else {
                       setErrorMessage(data)
@@ -52,27 +52,27 @@ import { useCookies } from 'react-cookie';
   return (
     <div className='grid grid-cols-1 sm:grid-cols-2 h-screen w-full'>
         <div className='hidden sm:block'>
-            <img className='w-full h-full object-cover' src={loginImg} alt="" />
+            <img className='w-full h-full object-cover rounded-md p-4' src={loginImg} alt="" />
         </div>
 
         <div className='bg-light-500 flex flex-col justify-center'>
-            <h1 className='text-green-700 font-bold text-5xl p-8'>Welcome Buddies !</h1>
+            <h1 className='text-teal-500 font-bold text-3xl p-7 text-center'>Welcome Buddies !</h1>
 
-            <form className='max-w-[400px] w-full h-max mx-auto rounded-lg bg-gray-900 p-8 px-8 '>
-                <h2 className='text-4xl dark:text-white font-bold text-center'>LOGIN</h2>
+            <form className='max-w-[400px] w-full h-max mx-auto rounded-lg bg-blue-200 p-8 px-8 '>
+                <h2 className='text-4xl text-teal-600 font-extrabold text-center'>LOGIN</h2>
                 {errorMessage && <div className="p-4 mb-4 text-sm text-red-700 bg-red-100 rounded-lg dark:bg-red-200 dark:text-red-800" role="alert">{errorMessage}</div>}
        
-                <div className='flex flex-col text-gray-400 py-2'>
-                    <label className='text-red-700 text-bold'>Email</label>
-                    <input className='rounded-lg bg-gray-700 mt-2 p-2 focus:border-blue-500 focus:bg-gray-800 focus:outline-none' type="text" onChange={(e)=> {setEmail(e.target.value)}} />
+                <div className='flex flex-col text-blue-900 py-2'>
+                    <label className='text-blue-900 text-bold'>Email</label>
+                    <input className='rounded-lg bg-gray-200 mt-2 p-2 focus:border-blue-500 focus:bg-gray-400 focus:outline-none' type="text" onChange={(e)=> {setEmail(e.target.value)}} />
                 </div>
-                <div className='flex flex-col text-gray-400 py-2'>
+                <div className='flex flex-col text-blue-900 py-2'>
                     <label className=''>Password</label>
-                    <input className='p-2 rounded-lg bg-gray-700 mt-2 focus:border-blue-500 focus:bg-gray-800 focus:outline-none' type="password" onChange={(e)=> {setPassword(e.target.value)}} />
+                    <input className='p-2 rounded-lg bg-gray-200 mt-2 focus:border-blue-200 focus:bg-gray-400 focus:outline-none' type="password" onChange={(e)=> {setPassword(e.target.value)}} />
                 </div>
           
-                <button onClick={(e) => handleSubmit(e)} className='w-full my-5 py-2 bg-teal-500 shadow-lg shadow-teal-500/50 hover:shadow-teal-500/40 text-white font-semibold rounded-lg'>SIGN IN</button>
-                <Link className='text-1xl dark:text-white font-sans ' to="/signup"><p>New User ?</p></Link>
+                <button onClick={(e) => handleSubmit(e)} className='w-full my-5 py-2 bg-blue-700 shadow-lg shadow-teal-500/50 hover:shadow-teal-500/40 text-white font-semibold rounded-lg'>LOGIN</button>
+                <Link className='text-1xl text-green-900 font-sans text-center ' to="/signup"><p>New User ?</p></Link>
                
             </form>
         </div>
