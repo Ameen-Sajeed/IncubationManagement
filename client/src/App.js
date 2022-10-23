@@ -11,6 +11,8 @@ import User from './Store/UserContext';
 import { Fragment } from 'react';
 import Success from './Pages/Success';
 import Applications from './Store/ApplicationContext'
+import Approve from './Pages/Approved';
+import Reject from './Pages/Rejected';
 
 function App() {
   return (
@@ -34,6 +36,8 @@ function App() {
      <Routes>
      <Route path='/admin/login' element={<AdminLogin/>}/>  
      <Route  path='/admin' element={<AdminHome/>}/>  
+     <Route  path='/approved' element={<Approve/>}/>  
+     <Route  path='/rejected' element={<Reject/>}/>  
 
     </Routes> 
    </Router>

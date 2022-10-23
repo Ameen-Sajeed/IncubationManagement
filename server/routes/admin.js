@@ -45,5 +45,66 @@ router.get('/application', (req, res) => {
    })
    })
 
+   
+router.post('/approve/:id', async (req, res) => {
+    try {
+        applicationForm.findByIdAndUpdate({ _id: req.params.id }, {
+            $set: {
+                status: "approved"
+            }
+        }).then(response => {
+            if (response) res.status(200).json({ update: true })
+        }).catch(error => {
+            res.json(error)
+        })
+    } catch (error) {
+        console.log(error);
+    }
+})
+
+   router.post('/reject/:id', async (req, res) => {
+    try {
+        applicationForm.findByIdAndUpdate({ _id: req.params.id }, {
+            $set: {
+                status: "rejected"
+            }
+        }).then(response => {
+            if (response) res.status(200).json({ update: true })
+        }).catch(error => {
+            res.json(error)
+        })
+    } catch (error) {
+        console.log(error);
+    }
+})
+router.get('/approved', async (req, res) => {
+    try {
+        applicationForm.find({ status: "approved" }).then(response => {
+            console.log("lklkk");
+            console.log(response);
+            res.status(200).json(response)
+        }).catch(error => {
+            res.json(error)
+        })
+    } catch (error) {
+        console.log(error);
+    }
+})
+
+
+router.get('/rejected', async (req, res) => {
+    try {
+        applicationForm.find({ status: "rejected" }).then(response => {
+            console.log("lklkkopopo");
+            console.log(response);
+            res.status(200).json(response)
+        }).catch(error => {
+            res.json(error)
+        })
+    } catch (error) {
+        console.log(error);
+    }
+})
+
 
 module.exports = router

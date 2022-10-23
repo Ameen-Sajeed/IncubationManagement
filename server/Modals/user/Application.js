@@ -32,14 +32,15 @@ const applicationForm = new mongoose.Schema({
     //     type: String,
     //     required: true,
     // },
-    // Incubation: {
-    //     type: String,
-    //     required: true,
-    // },
-    // status: {
-    //     type: String,
-    //     required: true,
-    // }
+    Incubation: {
+        type: String,
+        required: true,
+    },
+    status: {
+        type: String,
+        default:"pending",
+        required: true,
+    }
 })
 
 const ApplicationModel = mongoose.model('application', applicationForm)
