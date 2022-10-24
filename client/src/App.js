@@ -13,7 +13,9 @@ import Success from './Pages/Success';
 import Applications from './Store/ApplicationContext'
 import Approve from './Pages/Approved';
 import Reject from './Pages/Rejected';
-
+import SlotBook from './Pages/Slots';
+import Create from './Pages/Createslot';
+import Progresspage from './Pages/Progress';
 function App() {
   return (
 
@@ -35,9 +37,12 @@ function App() {
    
      <Routes>
      <Route path='/admin/login' element={<AdminLogin/>}/>  
-     <Route  path='/admin' element={<AdminHome/>}/>  
+     <Route  path='/dashboard' element={<AdminHome/>}/>  
      <Route  path='/approved' element={<Approve/>}/>  
      <Route  path='/rejected' element={<Reject/>}/>  
+     <Route  path='/slot' element={<SlotBook/>}/>  
+     <Route  path='/createslot' element={<Create/>}/>  
+     <Route  path='/progress' element={<Progresspage/>}/>  
 
     </Routes> 
    </Router>

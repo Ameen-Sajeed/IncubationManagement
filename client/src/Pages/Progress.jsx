@@ -1,8 +1,8 @@
 import React,{useContext,useEffect} from "react";
-import Aprroved from "../components/Admin/Approved/Aprroved";
 import { Outlet } from "react-router-dom";
 import Sidebar2 from "../components/Admin/Sidebar/Sidebar";
-function Approve (){
+import Progress from "../components/Admin/Progress/Progress";
+function Progresspage (){
 
 
 
@@ -11,7 +11,7 @@ return(
 
 <div className="flex">
     <Sidebar2/>
-    <Aprroved/>
+    <Progress/>
 
 
     </div>
@@ -23,4 +23,4 @@ return(
 )
 }
 
-export default Approve
+export default Progresspage

@@ -21,12 +21,12 @@ export default function Sidebar2() {
 
 
     const Menus = [
-        { title: "Dashboard", src: "Chart_fill" },
-        { title: "Application List", src: "Chat" },
-        { title: "Rejected List", src: "User",  },
-        { title: "Booking Slots ", src: "Calendar" },
-        { title: "Progress Status", src: "Search" },
-        { ameen: "Progress Sta", src: "Search" },
+        { Dashboard: "Dashboard", src: "Chart_fill" },
+        { Approve: "Approved List", src: "Chat" },
+        { Reject: "Rejected List", src: "User",  },
+        { Slots: "Booking Slots ", src: "Calendar" },
+        { create: "Create Slots", src: "Search" },
+        { progress: "Progress Status", src: "Search" },
     
       ];
   return (
@@ -70,6 +70,14 @@ export default function Sidebar2() {
               <span className={`${!open && "hidden"} origin-left duration-200`}>
                 {Menu.title}
                 <Link to='/'>{Menu.ameen}</Link>
+                <Link to='/approved'>{Menu.Approve}</Link>
+                <Link to='/rejected'>{Menu.Reject}</Link>
+                <Link to='/slot'>{Menu.Slots}</Link>
+                <Link to='/dashboard'>{Menu.Dashboard}</Link>
+                <Link to='/createslot'>{Menu.create}</Link>
+                <Link to='/progress'>{Menu.progress}</Link>
+
+
               </span>
 
             </li>

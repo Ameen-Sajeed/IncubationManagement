@@ -1,8 +1,8 @@
 import React,{useContext,useEffect} from "react";
-import Aprroved from "../components/Admin/Approved/Aprroved";
 import { Outlet } from "react-router-dom";
+import CreateSlot from "../components/Admin/CreateSlot/createSlot";
 import Sidebar2 from "../components/Admin/Sidebar/Sidebar";
-function Approve (){
+function Create (){
 
 
 
@@ -11,8 +11,7 @@ return(
 
 <div className="flex">
     <Sidebar2/>
-    <Aprroved/>
-
+    <CreateSlot/>
 
     </div>
     <Outlet/>
@@ -23,4 +22,4 @@ return(
 )
 }
 
-export default Approve
+export default Create
