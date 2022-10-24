@@ -45,6 +45,16 @@ router.get('/application', (req, res) => {
    })
    })
 
+   router.get('/app', (req, res) => {
+    applicationForm.find({status:"pending"}).then((data)=>{
+      console.log(data);
+      res.json(data);
+   }).catch(()=>{
+      let err='Something went wrong!'
+      res.json({err:err});
+   })
+   })
+
    
 router.post('/approve/:id', async (req, res) => {
     try {
@@ -144,49 +154,25 @@ router.get('/slotBooking', async (req, res) => {
 })
 
 
-router.post('/createslots',async(req,res)=>{
-//     console.log("slotssss");
-//     slotsbooking.create(req.body).then((response)=>{
-//       console.log("created");
-//       console.log(response);
-//       res.json(response)
-//     }).catch((err)=>{
-//       console.log(err);
-//     })
-//   })
+router.post('/create',async(req,res)=>{
+
 try {
+
+    console.log("slookoo");
 
     const createslot = new slotsbooking({
         bookedId: req.body.bookedId,
         sloatNo: req.body.sloatNo,
 
     })
-     createslot.save().then((data)=>{
-        console.log(data);
-        res.json(data)
-    }).catch(error=>{
-        res.json(data)
-    })
+     await createslot.save()
+     res.status(200).json({res:createslot})
     
 } catch (error) {
     console.log(error);
 }
 })
 
-// router.post('/booking/:id',async (req, res, next) => {
-//     let appId=req.params.id
-//     let {val, index}=req.body
-//     let char=val[index].slot
-//     applicationForm.findOneAndUpdate({_id:appId},{$set:{isBooked:true, slotId:char}}).then((data)=>{
-//       data.isBooked=true
-//       data.slotId=char
-//       res.json({data});
-//    }).catch((err)=>{
-//     console.log(err);
-//        err='Something went wrong!'
-//       res.json({err:err});
-//    })
-//    })
 
 
 router.get('/progress', async (req, res) => {

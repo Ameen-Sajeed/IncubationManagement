@@ -67,10 +67,7 @@ export default function Rejected() {
                                 class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-center text-xs font-semibold text-gray-600 uppercase tracking-wider">
                                 STATUS
                             </th>
-                            <th
-                                class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-center text-xs font-semibold text-gray-600 uppercase tracking-wider">
-                                ACTION
-                            </th>
+                          
                         </tr>
                     </thead>
                     <tbody>
@@ -85,12 +82,9 @@ export default function Rejected() {
                         <td className="text-center">{index +1}</td>
                         <td className="text-center">{obj.name}</td>
                         <td className="text-center">{obj.email}</td>
-                        <td className="text-center">{obj.company_name}</td>
-                        <td className="text-center">{obj.status}</td>
-                        <td className="text-center p-4 ">
-                        <button type="button" class=" m-2  inline-block px-6 py-2.5 bg-green-600 text-white font-medium text-xs leading-tight uppercase rounded-full shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-purple-200 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-green-200 active:shadow-lg transition duration-150 ease-in-out">ApprOVE</button>
-                        <button type="button" class="  inline-block px-6 py-2.5 bg-red-600 text-white font-medium text-xs leading-tight uppercase rounded-full shadow-md hover:bg-yellow-400 hover:shadow-lg focus:bg-purple-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-purple-800 active:shadow-lg transition duration-150 ease-in-out">REJECT</button>
-                        </td>              
+                        <td className="text-center p-4">{obj.company_name}</td>
+                        <td className="text-center text-red-500">{obj.status}</td>
+                                  
                         </tr>
                       )
                                 })

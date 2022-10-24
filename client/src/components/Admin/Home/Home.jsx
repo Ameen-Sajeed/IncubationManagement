@@ -1,16 +1,12 @@
 import { useContext, useEffect, useReducer, useState } from "react";
-import logo from '../../../assets/images/logo.jpg'
-import user from '../../../assets/images/User.png'
-import pg from '../../../assets/images/5607.jpg'
 import { Link, useNavigate } from "react-router-dom";
 import { UserContext } from "../../../Store/UserContext";
 import { ApplicationContext } from "../../../Store/ApplicationContext";
 import Axios from 'axios'
 
  export default function Home () {
-  const [open, setOpen] = useState(true);
 
-  const navigate = useNavigate()
+//   const navigate = useNavigate()
 //   const [reducerValue, forceUpdate] = useReducer(x => x + 1, 0);
   const { setAdminDetails, removeCookie } = useContext(UserContext)
   const { applications, setApplications } = useContext(ApplicationContext)
@@ -23,21 +19,16 @@ import Axios from 'axios'
     phone: '', company_name: '', Incubation: '',
     image: '', status: ''
 });
-  const handleLogout = () => {
-    localStorage.removeItem('admin')
-    setAdminDetails(null);
-    removeCookie("jwt");
-    navigate('/admin/login');
-  }
+
 
 
   useEffect(() => {
-    Axios.get('http://localhost:5000/admin/application').then((response) => {
+    Axios.get('http://localhost:5000/admin/app').then((response) => {
         if (response.data) {
             const { data } = response
-            console.log(data);
             setApplications(data)
             setForms(data)
+            // console.log(setForms);
         } else {
             setErrorMessage('Something went wrong')
         }
@@ -59,6 +50,19 @@ const fullDetails = (id) => {
         }
     })
 }
+
+// const details = () =>{
+//     console.log("opopo");
+    
+
+// }
+// details()
+
+forms.filter((obj)=>{
+    if(obj.status == 'rejected')
+    console.log("klklklk");
+    console.log(obj);
+})
 
 
 // const approveForm = (id) => {
@@ -90,9 +94,9 @@ const rejectForm = (id) => {
 }))
 }
 
-
   return (
-    <div className="flex">
+
+    
       <div class="container mx-auto px-4 sm:px-8">
     <div class="py-8">
         <div>
@@ -100,6 +104,8 @@ const rejectForm = (id) => {
         </div>
         <div class="-mx-4 sm:-mx-8 px-4 sm:px-8 py-4 overflow-x-auto">
             <div class="inline-block min-w-full shadow rounded-lg overflow-hidden">
+        
+
                 <table class="min-w-full leading-normal">
                     <thead>
                         <tr>
@@ -136,7 +142,6 @@ const rejectForm = (id) => {
                                 
                                     
                       return  ( 
-                      
                       <tr>
                         <td className="text-center">{index +1}</td>
                         <td className="text-center">{obj._id}</td>
@@ -154,11 +159,13 @@ const rejectForm = (id) => {
                                 })
                             }
                     </tbody>
+                
+                    
                 </table>
+                
             </div>
         </div>
     </div>
-</div>
 
 {showModal ? (
                 <>
@@ -226,5 +233,6 @@ const rejectForm = (id) => {
 
 
      </div>
+                                        
   )
 }

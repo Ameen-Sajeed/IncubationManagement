@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { ApplicationContext } from '../../../Store/ApplicationContext'
 import { UserContext } from '../../../Store/UserContext'
 import Axios from 'axios'
@@ -34,6 +34,13 @@ export default function Aprroved() {
             console.log(response.data);
         })).catch(error => console.log(error))
     }, [Navigate]);
+
+    const rejectForm = (id) => {
+        Axios.post("http://localhost:5000/admin/reject/"+ id).then((result => {
+            console.log(result.status);
+    }))
+    }
+
   return (
     <div class="container mx-auto px-4 sm:px-8">
     <div class="py-8">
@@ -86,8 +93,8 @@ export default function Aprroved() {
                         <td className="text-center">{obj.company_name}</td>
                         <td className="text-center">{obj.status}</td>
                         <td className="text-center p-4 ">
-                        <button type="button" class=" m-2  inline-block px-6 py-2.5 bg-green-600 text-white font-medium text-xs leading-tight uppercase rounded-full shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-purple-200 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-green-200 active:shadow-lg transition duration-150 ease-in-out">ApprOVE</button>
-                        <button type="button" class="  inline-block px-6 py-2.5 bg-red-600 text-white font-medium text-xs leading-tight uppercase rounded-full shadow-md hover:bg-yellow-400 hover:shadow-lg focus:bg-purple-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-purple-800 active:shadow-lg transition duration-150 ease-in-out">REJECT</button>
+                        <Link to='/slot'><button type="button" class=" m-2  inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded-full shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-purple-200 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-green-200 active:shadow-lg transition duration-150 ease-in-out">book slot</button></Link>
+                        <button type="button" class="  inline-block px-6 py-2.5 bg-red-600 text-white font-medium text-xs leading-tight uppercase rounded-full shadow-md hover:bg-yellow-400 hover:shadow-lg focus:bg-purple-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-purple-800 active:shadow-lg transition duration-150 ease-in-out"  onClick={(e) => { rejectForm(obj._id) }}>REJECT</button>
                         </td>              
                         </tr>
                       )

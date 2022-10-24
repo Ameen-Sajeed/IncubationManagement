@@ -68,7 +68,7 @@ function BookingSlots() {
                    {
         sloatBooking.map((item)=>{
             return(
-                <div className={` p-10 w-28 h-28 cursor-pointer bg-blue-400  ${item.status ? "bg-blue-900" : "bg-blue-300"}`} onClick={() => item.status ? alert("This slot is Already Booked"): fullDetails(item.sloatNo)}>{item.sloatNo}</div>
+                <div className={` p-10 w-28 h-28 cursor-pointer bg-blue-300  ${item.status ? "bg-blue-700" : "bg-blue-300"}`} onClick={() => item.status ? alert("This slot is Already Booked"): fullDetails(item.sloatNo)}>{item.sloatNo}</div>
 
             )
         })
