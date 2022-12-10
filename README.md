@@ -47,7 +47,7 @@ Then he can approve or reject the applications and also the view the application
 Clone the project
 
 ```bash
-  git clone https://github.com/Ameen-Sajeed/Myharvest
+  git clone https://github.com/Ameen-Sajeed/IncubationManagement
 ```
 
 Go to the project directory
